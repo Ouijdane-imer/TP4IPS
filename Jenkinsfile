@@ -1,16 +1,24 @@
-pipeline {
-  agent any
-  stages {
-    stage('build') {
-      steps {
-       echo 'build'
-      }
+pipeline{
+    agent any
+    environment {
+        VAR = "${params.VAR}"
     }
-    stage('test') {
-      steps {
-        echo 'test'
-      }
-    }
-  }
-}
+    stages {
+        stage("Display param") {
+            steps {
+                script {
+                    if(VAR)
+                    {
+                      Echo “my value is true”
+                    }
+                    else if(VAR)
+                    {
+                         Echo “my value is false”
 
+                    }
+                  
+                }
+            }
+        }
+    }
+}
